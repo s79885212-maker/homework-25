@@ -19,7 +19,7 @@
   --blues: #1d4ed8;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --bg: #000000;
   --panel: #121212;
   --hero: #1f1f1f;
@@ -50,7 +50,12 @@ body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    Roboto,
+    sans-serif;
   overflow: hidden;
 }
 
@@ -215,11 +220,11 @@ button {
   display: none;
 }
 
-[data-theme='dark'] .icon-moon {
+[data-theme="dark"] .icon-moon {
   display: none;
 }
 
-[data-theme='dark'] .icon-sun {
+[data-theme="dark"] .icon-sun {
   display: block;
 }
 
@@ -567,7 +572,7 @@ button {
 }
 
 .progress::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -6px 0;
 }
@@ -581,7 +586,7 @@ button {
 }
 
 .progress-fill::after {
-  content: '';
+  content: "";
   position: absolute;
   right: -6px;
   top: 50%;
@@ -624,7 +629,11 @@ button {
   appearance: none;
   -webkit-appearance: none;
   border-radius: 2px;
-  background: linear-gradient(to right, var(--range) var(--value), var(--range-bg) var(--value));
+  background: linear-gradient(
+    to right,
+    var(--range) var(--value),
+    var(--range-bg) var(--value)
+  );
   cursor: pointer;
   outline: none;
 }
