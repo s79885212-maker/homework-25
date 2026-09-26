@@ -6,7 +6,8 @@ let state = {
   category: 'jazz',
   trackId: null,
   isPlaying: false,
-  volume: 0.7
+  volume: 0.7,
+  shuffle: false
 };
 
 const categoryNames = {
@@ -40,6 +41,7 @@ const muteBtn = document.querySelector('#muteBtn');
 const volumeRange = document.querySelector('#volumeRange');
 const volumeBox = document.querySelector('.volume');
 const themeBtn = document.querySelector('#themeBtn');
+const shuffleBtns = document.querySelectorAll('.shuffle-btn');
 
 audio.volume = state.volume;
 
@@ -203,6 +205,16 @@ function playNextTrack() {
   const current = getTrack(state.trackId);
   const list = getCategoryTracks(current.category);
   const index = list.indexOf(current);
+
+  if (state.shuffle && list.length > 1) {
+    let randomIndex = index;
+    while (randomIndex === index) {
+      randomIndex = Math.floor(Math.random() * list.length);
+    }
+    playTrack(list[randomIndex].id);
+    return;
+  }
+
   const next = list[(index + 1) % list.length];
   playTrack(next.id);
 }
@@ -226,6 +238,15 @@ categoryItems.forEach(function (item) {
 playBtn.addEventListener('click', togglePlay);
 nextBtn.addEventListener('click', playNextTrack);
 prevBtn.addEventListener('click', playPrevTrack);
+
+shuffleBtns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    state.shuffle = !state.shuffle;
+    shuffleBtns.forEach(function (b) {
+      b.classList.toggle('active', state.shuffle);
+    });
+  });
+});
 
 heroPlayBtn.addEventListener('click', function () {
   const current = getTrack(state.trackId);

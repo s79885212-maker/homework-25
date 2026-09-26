@@ -324,6 +324,15 @@ button {
   color: var(--text);
 }
 
+.icon-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.shuffle-btn.active,
+.shuffle-btn.active:hover {
+  color: var(--accent);
+}
+
 .playlist-actions .icon-btn .icon {
   width: 26px;
   height: 26px;
